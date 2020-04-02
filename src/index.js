@@ -122,7 +122,6 @@ FsAPI.prototype.request = function(endpoint, verb, args, callback) {
     // Build request using access token
     var options = {
 		hostname: this.apiHost,
-		port: this.apiPort,
 		path: this.apiPath + endpoint,
 		method: verb,
 		headers: {
