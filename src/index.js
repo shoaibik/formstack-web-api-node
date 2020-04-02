@@ -122,14 +122,15 @@ FsAPI.prototype.request = function(endpoint, verb, args, callback) {
     // Build request using access token
     var options = {
 		hostname: this.apiHost,
-		path: this.apiPath + endpoint,
+        path: this.apiPath + endpoint,
+        port: this.apiPort,
 		method: verb,
 		headers: {
 			'Authorization': 'Bearer ' + this.accessToken
 		}
     };
     
-    if (postData)
+    if (postData && method === 'POST')
         options.headers["Content-Length"] = postData.length;
     
     var req = https.request(options, function(res) {
